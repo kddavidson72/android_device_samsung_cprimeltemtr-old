@@ -22,3 +22,7 @@ Finally, to start syncing, run this command:
 
 Once you finished syncing, to build CyanogenMod, run these commands:
 > . build/envsetup.sh && brunch cm_cprimeltemtr-userdebug
+
+#Credits
+Azimoto9: Helping out with writing the config, and fixing errors.
+Koognod: Creating SlimPickins (which allowed us to grab files easily), testing.
