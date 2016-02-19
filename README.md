@@ -25,4 +25,5 @@ Once you finished syncing, to build CyanogenMod, run these commands:
 
 #Credits
 Azimoto9: Helping out with writing the config, and fixing errors.
+
 Koognod: Creating SlimPickins (which allowed us to grab files easily), testing.
