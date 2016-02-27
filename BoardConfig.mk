@@ -20,7 +20,7 @@
 # definition file).
 #
 
-# Inherit from common cprimeltemtr
+# Inherit from common version
 -include device/samsung/coreprimelte-common/BoardConfigCommon.mk
 
 # Inherit from the proprietary version
