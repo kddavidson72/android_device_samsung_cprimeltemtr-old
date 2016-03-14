@@ -23,21 +23,42 @@
 # Inherit from common version
 -include device/samsung/coreprimelte-common/BoardConfigCommon.mk
 
-# Inherit from the proprietary version
--include vendor/samsung/coreprimelte-common/BoardConfigVendor.mk
-
 # Assert
-TARGET_OTA_ASSERT_DEVICE := cprimeltemtr,SM-G360T1
+TARGET_OTA_ASSERT_DEVICE := cprimeltemtr
+
+# Make Boot Image
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/cprimeltemtr/mkbootimg.mk
+
+# Resolution
+DEVICE_RESOLUTION := 480x800
 
 # Kernel
 TARGET_KERNEL_CONFIG := msm8916_defconfig
-#TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
-#TARGET_KERNEL_TIMA_CONFIG := tima8916_defconfig
-#TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
-#TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_tmo_defconfig
 
-#TWRP
+# Enable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := true
+
+# TWRP
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
+# Storage
+TARGET_RECOVERY_FSTAB := device/samsung/cprimeltemtr/fstab.msm8916
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_NO_USB_STORAGE := true
+TW_MTP_DEVICE := /dev/usb_mtp_gadget
+RECOVERY_SDCARD_ON_DATA := true
+
+# Misc.
+BOARD_RECOVERY_SWIPE := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_NO_REBOOT_BOOTLOADER := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/coreprimelte-common
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
+
+# Inherit from vendor
+-include vendor/samsung/cprimeltemtr/BoardConfigVendor.mk
