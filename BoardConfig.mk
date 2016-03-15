@@ -20,11 +20,13 @@
 # definition file).
 #
 
+COMMON_PATH := device/samsung/coreprimelte-common
+
 # Inherit from common version
 -include device/samsung/coreprimelte-common/BoardConfigCommon.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := cprimeltemtr
+TARGET_OTA_ASSERT_DEVICE := cprimeltemtr, SM-G360T1
 
 # Make Boot Image
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/cprimeltemtr/mkbootimg.mk
@@ -56,6 +58,9 @@ BOARD_RECOVERY_SWIPE := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_NO_REBOOT_BOOTLOADER := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
+
+BOARD_SEPOLICY_DIRS += \
+    $(COMMON_PATH)/sepolicy
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
