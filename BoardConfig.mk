@@ -35,7 +35,9 @@ BOARD_CUSTOM_BOOTIMG_MK := device/samsung/cprimeltemtr/mkbootimg.mk
 DEVICE_RESOLUTION := 480x800
 
 # Kernel
-TARGET_KERNEL_CONFIG := msm8916_defconfig
+TARGET_KERNEL_CONFIG 				:= msm8916_sec_defconfig
+TARGET_KERNEL_SELINUX_CONFIG 			:= selinux_defconfig
+TARGET_KERNEL_VARIANT_CONFIG 			:= msm8916_sec_rossa_tmo_defconfig
 
 # Enable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := true
