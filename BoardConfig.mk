@@ -25,6 +25,14 @@ COMMON_PATH := device/samsung/coreprimelte-common
 # Inherit from common version
 -include device/samsung/coreprimelte-common/BoardConfigCommon.mk
 
+# Arch
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
+
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/cprimeltemtr/include
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := cprimeltemtr, SM-G360T1
 
@@ -66,6 +74,3 @@ BOARD_SEPOLICY_DIRS += \
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
-
-# Inherit from vendor
--include vendor/samsung/cprimeltemtr/BoardConfigVendor.mk
