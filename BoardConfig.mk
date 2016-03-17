@@ -27,6 +27,12 @@ LOCAL_PATH  := device/samsung/cprimeltemtr
 # Inherit from common version
 -include device/samsung/msm8916-common/BoardConfigCommon.mk
 
+# Arch
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := cprimeltemtr, SM-G360T1
 
