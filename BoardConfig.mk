@@ -20,18 +20,12 @@
 # definition file).
 #
 
-COMMON_PATH := device/samsung/coreprimelte-common
+COMMON_PATH := device/samsung/msm8916-common
+
+LOCAL_PATH  := device/samsung/cprimeltemtr
 
 # Inherit from common version
--include device/samsung/coreprimelte-common/BoardConfigCommon.mk
-
-# Arch
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_CPU_VARIANT := cortex-a53
-TARGET_CPU_CORTEX_A53 := true
-
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/cprimeltemtr/include
+-include device/samsung/msm8916-common/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := cprimeltemtr, SM-G360T1
@@ -55,11 +49,7 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Storage
 TARGET_RECOVERY_FSTAB := device/samsung/cprimeltemtr/fstab.msm8916
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_NO_USB_STORAGE := true
+TW_NO_USB_STORAGE := false
 TW_MTP_DEVICE := /dev/usb_mtp_gadget
 RECOVERY_SDCARD_ON_DATA := true
 
@@ -69,8 +59,8 @@ TW_HAS_DOWNLOAD_MODE := true
 TW_NO_REBOOT_BOOTLOADER := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 
-BOARD_SEPOLICY_DIRS += \
-    $(COMMON_PATH)/sepolicy
-
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
+
+# Inherit from vendor
+-include vendor/samsung/cprimeltemtr/BoardConfigVendor.mk

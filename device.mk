@@ -24,4 +24,4 @@ TARGET_SCREEN_WIDTH := 480
 DEVICE_PACKAGE_OVERLAYS += device/samsung/cprimeltemtr/overlay
 
 # Inherit from coreprimelte-common
-$(call inherit-product, device/samsung/coreprimelte-common/common.mk)
+$(call inherit-product, device/samsung/msm8916-common/msm8916.mk)
