@@ -20,53 +20,53 @@
 # definition file).
 #
 
-COMMON_PATH := device/samsung/msm8916-common
-
-LOCAL_PATH  := device/samsung/cprimeltemtr
-
 # Inherit from common version
 -include device/samsung/msm8916-common/BoardConfigCommon.mk
 
-# Arch
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_CPU_VARIANT := cortex-a53
-TARGET_CPU_CORTEX_A53 := true
-
 # Assert
-TARGET_OTA_ASSERT_DEVICE := cprimeltemtr, SM-G360T1
+TARGET_OTA_ASSERT_DEVICE := cprimeltemtr,SM-G360T1
 
-# Make Boot Image
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/cprimeltemtr/mkbootimg.mk
+# Partitions
+TARGET_RECOVERY_FSTAB := device/samsung/cprimeltemtr/fstab.msm8916
 
-# Resolution
-DEVICE_RESOLUTION := 480x800
+# Partition sizes
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 13631488
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Kernel
-TARGET_KERNEL_CONFIG 				:= msm8916_sec_defconfig
-TARGET_KERNEL_SELINUX_CONFIG 			:= selinux_defconfig
-TARGET_KERNEL_VARIANT_CONFIG 			:= msm8916_sec_rossa_tmo_defconfig
-
-# Enable HW based full disk encryption
-TARGET_HW_DISK_ENCRYPTION := true
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x80008000 --ramdisk_offset 0x82000000 --tags_offset 0x81e00000 --dt device/samsung/cprimeltemtr/dt.img
+#TARGET_PREBUILT_KERNEL := device/samsung/cprimeltemtr
+TARGET_KERNEL_CONFIG := msm8916_defconfig
+TARGET_KERNEL_TIMA_CONFIG := tima8916_defconfig
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_tmo_defconfig
 
 # TWRP
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
-# Storage
-TARGET_RECOVERY_FSTAB := device/samsung/cprimeltemtr/fstab.msm8916
-TW_NO_USB_STORAGE := false
-TW_MTP_DEVICE := /dev/usb_mtp_gadget
-RECOVERY_SDCARD_ON_DATA := true
-
-# Misc.
-BOARD_RECOVERY_SWIPE := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_NO_REBOOT_BOOTLOADER := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
 
-# Inherit from vendor
--include vendor/samsung/cprimeltemtr/BoardConfigVendor.mk
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/msm8916-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    bluetooth_loader.te \
+    file_contexts \
+    mediaserver.te \
+    property_contexts \
+    system_app.te \
+    time_daemon.te \
+    vold.te \
+    bluetooth.te \
+    file.te \
+    kernel.te \
+    mm-qcamerad.te \
+    property.te \
+    rild.te \
+    ueventd.te \
+    wcnss_service.te
