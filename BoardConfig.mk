@@ -50,23 +50,3 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/cprimeltemtr
-
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/msm8916-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    bluetooth_loader.te \
-    file_contexts \
-    mediaserver.te \
-    property_contexts \
-    system_app.te \
-    time_daemon.te \
-    vold.te \
-    bluetooth.te \
-    file.te \
-    kernel.te \
-    mm-qcamerad.te \
-    property.te \
-    rild.te \
-    ueventd.te \
-    wcnss_service.te
