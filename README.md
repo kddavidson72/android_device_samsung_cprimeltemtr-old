@@ -2,7 +2,7 @@
 ![cmlogo](https://llaverotecnologico.files.wordpress.com/2015/06/wpid-wp-1435340344758.jpeg)
 <p align="center">
 #CyanogenMod 13.0 Device Configuration for the Samsung Galaxy Core Prime (G360T1).
-Warning: Currently, this configuration allows CyanogenMod to build, CyanogenMod does **not** boot past the boot animation. We are working on fixing that.
+Warning: **This does not build or boot. We are working on fixing that.** 
 
 In order to build CyanogenMod yourself, you must first setup a build environment. Instructions to do that can be found [here](https://source.android.com/source/initializing.html).
 
